@@ -1,0 +1,67 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sse                |
+| student            |
+| subject            |
+| sys                |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use suject;
+ERROR 1049 (42000): Unknown database 'suject'
+mysql> use subject;
+Database changed
+mysql> create table subject(regno int(3),name varchar(15),gender varchar(1),dob date,mobileno int(10),city varchar(15));
+Query OK, 0 rows affected, 2 warnings (0.03 sec)
+
+mysql> desc subjects;
+ERROR 1146 (42S02): Table 'subject.subjects' doesn't exist
+mysql> desc subject;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| regno    | int         | YES  |     | NULL    |       |
+| name     | varchar(15) | YES  |     | NULL    |       |
+| gender   | varchar(1)  | YES  |     | NULL    |       |
+| dob      | date        | YES  |     | NULL    |       |
+| mobileno | int         | YES  |     | NULL    |       |
+| city     | varchar(15) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> alter table subject
+    -> ADD branch varchar(20);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table subject
+    -> DROP COLUMN city;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc subject;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| regno    | int         | YES  |     | NULL    |       |
+| name     | varchar(15) | YES  |     | NULL    |       |
+| gender   | varchar(1)  | YES  |     | NULL    |       |
+| dob      | date        | YES  |     | NULL    |       |
+| mobileno | int         | YES  |     | NULL    |       |
+| branch   | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> TURNCATE table subject;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TURNCATE table subject' at line 1
+mysql> TRUNCATE table suject;
+ERROR 1146 (42S02): Table 'subject.suject' doesn't exist
+mysql> TRUNCATE table subject;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql>
